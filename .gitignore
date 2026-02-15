@@ -1,0 +1,12 @@
+#data
+data/
+#python
+__pycache__/
+*.pyc 
+*.pyo
+*.pyd
+#environment
+nlp/
+.DS_Store
+#logs
+logs/
