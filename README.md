@@ -99,7 +99,7 @@ The system supports PDF resume uploads and provides interpretable results throug
 ---
 
 ## Project Structure
-
+```
 resume-job-matcher/
 │
 ├── app.py
@@ -116,7 +116,7 @@ resume-job-matcher/
 │ ├── scorer.py
 │ ├── skill_extractor.py
 
-
+```
 ---
 
 ##  Model Details
@@ -189,5 +189,6 @@ streamlit run app.py
 * Whitespace Normalization: Ensuring clean vector inputs.
 
 ----
+
 
 
