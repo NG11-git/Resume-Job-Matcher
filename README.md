@@ -34,23 +34,52 @@ The system supports PDF resume uploads and provides interpretable results throug
 
 ## System Architecture
 ```
-            +-------------------+  
-            | Resume (PDF/TXT)  |
-            |                   |
-            +-------------------+
-                   ↓
-       |
-       |  Text Extraction (pdfplumber)
-                   ↓
-          Preprocessing (clean_text)
-                   ↓
-          Sentence-BERT Embeddings
-                   ↓
-            Cosine Similarity
-                   ↓
-      Skill Extraction & Gap Analysis
-                   ↓
-        Match Score + Suggestions
+                    ┌──────────────────────────┐
+                    │        User (UI)         │
+                    │  Upload Resume (PDF)     │
+                    │  Paste Job Description   │
+                    └─────────────--───────────┘
+                                 |
+                                 ▼
+                    ┌──────────────────────────┐
+                    │      Streamlit App       │
+                    │        (app.py)          │
+                    └──────────────┬───────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────┐
+                    │   PDF Text Extraction    │
+                    │      (pdfplumber)        │
+                    └──────────────┬───────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────┐
+                    │  Text Preprocessing      │
+                    │   (preprocess.py)        │
+                    │  - Lowercasing           │
+                    │  - Remove special chars  │
+                    │  - Normalize whitespace  │
+                    └──────────────┬───────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────┐
+                    │   Embedding Generation   │
+                    │   (model.py)             │
+                    │   all-MiniLM-L6-v2       │
+                    └──────────────┬───────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────┐
+                    │   Cosine Similarity      │
+                    │   (scikit-learn)         │
+                    └──────────────┬───────────┘
+                                   │
+                                   ▼
+                    ┌──────────────────────────┐
+                    │     Similarity Score     │
+                    │     (0.00 – 1.00)        │
+                    └──────────────────────────┘
+
 
 ```
 
@@ -160,4 +189,5 @@ streamlit run app.py
 * Whitespace Normalization: Ensuring clean vector inputs.
 
 ----
+
 
