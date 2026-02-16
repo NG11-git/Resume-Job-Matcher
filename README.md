@@ -33,21 +33,26 @@ The system supports PDF resume uploads and provides interpretable results throug
 ---
 
 ## System Architecture
+```
+            +-------------------+  
+            | Resume (PDF/TXT)  |
+            |                   |
+            +-------------------+
+                   ↓
+       |
+       |  Text Extraction (pdfplumber)
+                   ↓
+          Preprocessing (clean_text)
+                   ↓
+          Sentence-BERT Embeddings
+                   ↓
+            Cosine Similarity
+                   ↓
+      Skill Extraction & Gap Analysis
+                   ↓
+        Match Score + Suggestions
 
-Resume (PDF/TXT)
-↓
-Text Extraction (pdfplumber)
-↓
-Preprocessing (clean_text)
-↓
-Sentence-BERT Embeddings
-↓
-Cosine Similarity
-↓
-Skill Extraction & Gap Analysis
-↓
-Match Score + Suggestions
-
+```
 
 ---
 
@@ -155,3 +160,4 @@ streamlit run app.py
 * Whitespace Normalization: Ensuring clean vector inputs.
 
 ----
+
