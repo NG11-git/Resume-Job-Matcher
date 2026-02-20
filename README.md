@@ -1,4 +1,4 @@
-# 📄 AI Resume–Job Matching & Skill Gap Analyzer
+# 📄 AI Resume–Job Description Semantic Matcher
 
 An NLP-powered application that evaluates semantic similarity between resumes and job descriptions using transformer embeddings and provides explainable skill gap analysis.
 
@@ -189,6 +189,7 @@ streamlit run app.py
 * Whitespace Normalization: Ensuring clean vector inputs.
 
 ----
+
 
 
 
